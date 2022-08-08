@@ -1,0 +1,15 @@
+.common{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 83.9%;
+    margin: 0 0 8px;
+    display: block;
+}
+.modal__label{
+    @extend .common;
+
+}
+.item__label{
+    @extend .common;
+    display: inline;
+}

@@ -1,0 +1,31 @@
+.input__container{
+    position: relative;
+    .common {
+        background: #FFFFFF;
+        border: 2px solid #C0C0C0;
+        border-radius: 7px;
+        padding: 0px 20px;
+    }
+    .search__input{
+        @extend .common;
+        width: 600px;
+        height: 60px;
+        font-size: 24px;
+  
+        &::placeholder{
+            font-size: 24px;
+            color: #C0C0C0;
+        }
+    }
+    .form__input{
+        @extend .common;
+        width: 389px;
+        height: 50px;
+        font-size: 18px;
+
+        &::placeholder{
+            font-size: 18px;
+            color: #C0C0C0;
+        }
+    }  
+}
