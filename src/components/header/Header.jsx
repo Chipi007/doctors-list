@@ -22,6 +22,7 @@ export const Header = () => {
             <Input placeholder="Поиск..." typeInp = 'search-input'/>
             <Button type = 'button' typeBtn="add-button" openModal = {openModal}>Добавить</Button>
         </div>
+        {/*type = 'edit-modal', type = 'add-modal', type = 'observe-modal'*/}
         <Modal modalOpen = {modalOpen} setModalOpen = {setModalOpen} type = 'observe-modal'></Modal>
     </div>
   )
