@@ -22,6 +22,10 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
         return '';      
     }
   }, [type])
+
+  const neededButtonText = useMemo(() => {
+    return type === 'add-modal' ? 'Добавить' : 'Изменить'
+  }, [type])
   
   return (
     <div className='modal'>
@@ -55,7 +59,7 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
                     <div className={s.input__group}>
                       <Label text = 'Фото' className='modal__label'/>
                       <Button type = 'button' typeBtn = 'photo-button'>
-                        <img src = {Upload} alt = 'upload'/>Добавить фото
+                        <img src = {Upload} alt = 'upload'/>{neededButtonText} фото
                       </Button>
                     </div>
                     <div className={s.input__group}>
@@ -72,7 +76,7 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
                     </div>
                   </div>
                 </div>
-                <Button type = 'submit' typeBtn = 'primary-button'>Добавить</Button>
+                <Button type = 'submit' typeBtn = 'primary-button'>{neededButtonText}</Button>
                 <Button type = 'reset' typeBtn = 'secondary-button'>Очистить</Button>
               </form>
             )}

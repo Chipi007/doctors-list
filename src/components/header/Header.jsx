@@ -1,15 +1,15 @@
-import React , { useState } from 'react'
+import React, { useState } from 'react'
 import Logo from "../../img/logo.svg";
 import { Input } from '../input/Input';
 import { Button } from '../button/Button';
 import s from "./header.module.scss";
-import { Modal } from '../modal/Modal';
+import { Modal } from '../modal/Modal'
 
 export const Header = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const openModal = () =>{
+  const handleAddButton = () => {
     setModalOpen(true);
   }
   
@@ -20,10 +20,9 @@ export const Header = () => {
                 <img src={Logo} alt="Logo" />
             </div>
             <Input placeholder="Поиск..." typeInp = 'search-input'/>
-            <Button type = 'button' typeBtn="add-button" openModal = {openModal}>Добавить</Button>
+            <Button type = 'button' typeBtn="add-button" value='add-button' onClick = {handleAddButton}>Добавить</Button>
         </div>
-        {/*type = 'edit-modal', type = 'add-modal', type = 'observe-modal'*/}
-        <Modal modalOpen = {modalOpen} setModalOpen = {setModalOpen} type = 'observe-modal'></Modal>
+        <Modal modalOpen = {modalOpen} setModalOpen = {setModalOpen} type = 'add-modal'/>
     </div>
   )
 }

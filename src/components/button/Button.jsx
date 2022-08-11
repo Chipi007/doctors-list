@@ -1,7 +1,7 @@
 import React from 'react'
 import s from "./button.module.scss"
 
-export const Button = ({typeBtn, openModal, children, type}) => {
+export const Button = ({typeBtn, children, type, onClick}) => {
 
   const neededClass = (typeBtn) => {
     switch(typeBtn){
@@ -21,7 +21,8 @@ export const Button = ({typeBtn, openModal, children, type}) => {
         return "";    
     }
   }
+
   return (
-    <button type = {type} className={neededClass(typeBtn)} onClick = {openModal}>{children}</button>
+    <button type = {type} className={neededClass(typeBtn)} onClick = {onClick}>{children}</button>
   )
 }

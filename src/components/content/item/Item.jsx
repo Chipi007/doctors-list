@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '../../button/Button'
 import { Label } from '../../label/Label'
 import s from './item.module.scss'
@@ -7,8 +7,22 @@ import Pen from '../../../img/pen.svg'
 import { Avatar } from '../../avatar/Avatar'
 import Doctor from '../../../img/doctor.svg'
 import { TextItem } from '../../text/TextItem'
+import { Modal } from '../../modal/Modal'
+
 
 export const Item = () => {
+
+    const [editModalOpen, setEditModalOpen] = useState(false);
+    const [observeModalOpen, setObserveModalOpen] = useState(false); 
+
+    const handleEditButton = () =>{
+        setEditModalOpen(true);
+    }
+
+    const handleObserveButton = () =>{
+        setObserveModalOpen(true);
+    }
+
   return (
     <div className={s.item}>
         <div className={s.item__content}>
@@ -36,14 +50,16 @@ export const Item = () => {
                 </div>
             </div>
             <div className={s.content__buttons}>
-                <Button type = 'button' typeBtn = 'item-button'>
+                <Button type = 'button' typeBtn = 'item-button' onClick={handleObserveButton}>
                     <img src={Arrow} alt="SeeInfo" />
                 </Button>
-                <Button type = 'button' typeBtn = 'item-button'>
+                <Button type = 'button' typeBtn = 'item-button' onClick={handleEditButton}>
                     <img src={Pen} alt="EditInfo" />
                 </Button>
             </div>
         </div>
+        <Modal modalOpen = {editModalOpen} setModalOpen = {setEditModalOpen} type = 'edit-modal'/>
+        <Modal modalOpen = {observeModalOpen} setModalOpen = {setObserveModalOpen} type = 'observe-modal'/>
     </div>
   )
 }
