@@ -2,26 +2,26 @@ import React from 'react'
 import SearchButton from "../../img/search.svg"
 import { Button } from '../button/Button'
 import s from "./input.module.scss"
+import cx from 'classnames';
 
-export const Input = ({name, typeInp, placeholder}) => {
+export const Input = ({typeInp, placeholder}) => {
+  
+  const neededClass = (styles, inputVariants) =>
+  Object.keys(inputVariants).map(key => {
+    const value = inputVariants[key];
+    return styles[`${value}`];
+  });
 
-  const neededClass = (typeInp) => {
-    switch(typeInp){
-      case 'search-input':
-        return s.search__input;
-      case 'form-input':
-        return s.form__input;
-      default:
-        return "";    
-    }
-  }
+  const classes = neededClass(s, {
+    typeInp, 
+  });
 
   return (
-    <div className={s.input__container}>
-      <input className = {neededClass(typeInp)} type="text" placeholder={placeholder}/>
-      {typeInp === 'search-input' &&
-        <Button type = 'button' typeBtn = 'search-button'>
-          <img src={SearchButton} alt="" />
+    <div className={s.inputContainer}>
+      <input className = {cx(classes)} type="text" placeholder={placeholder}/>
+      {typeInp === 'searchInput' &&
+        <Button type = 'button' typeBtn = 'searchButton'>
+          <img src={SearchButton} alt="Поиск" />
         </Button>
       }
     </div>

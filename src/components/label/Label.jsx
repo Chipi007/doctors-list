@@ -5,10 +5,10 @@ export const Label = ({text, className}) => {
 
   const neededClassName = () => {
     switch (className){
-      case 'item__label':
-        return s.item__label;
-      case 'modal__label':
-        return s.modal__label;
+      case 'itemLabel':
+        return s.itemLabel;
+      case 'modalLabel':
+        return s.modalLabel;
       default:
         return '';    
     }

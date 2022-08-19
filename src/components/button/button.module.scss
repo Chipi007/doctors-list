@@ -6,57 +6,59 @@
     font-weight: 600;
     margin-top: 20px;
 }
-.add__button{
-    background: #29D1B3;
-    color: #FFFFFF;
+.addButton{
     width: 166px;
     height: 60px;
-    font-size: 24px;
     border-radius: 7px;
+    background: #29D1B3;
+    color: #FFFFFF;
+    font-size: 24px;
 }
-.primary__button{
+.primaryButton{
     background: #29D1B3;
     color: #FFFFFF;
     margin-right: 20px;
     @extend .common;
 }
-.secondary__button{
+.secondaryButton{
     background: transparent;
     border: 2px solid #29D1B3;
     color: #29D1B3;
     @extend .common;
 }
-.search__button{
+.searchButton{
     position: absolute;
-    background-color: transparent;
     top:50%;
     left: 90%;
     transform:translate(-0%, -50%);
+    background-color: transparent;
 }
-.photo__button{
-    background: rgba(41, 209, 179, 0.45);
-    width: 191px;
-    height: 50px;
-    border-radius: 7px;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 83.9%;
-    color: #FFFFFF;
+.photoButton{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 23px;
+
+    border-radius: 7px;
+    background: rgba(41, 209, 179, 0.45);
+    width: 191px;
+    height: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 83.9%;
+    color: #FFFFFF;
+
 }
-.item__button{
+.itemButton{
+    display: block;
+    width: 70px;
+    height: 70px;
     border-top: 3px solid #C0C0C0;
     border-left: 3px solid #C0C0C0;
     border-bottom: 3px solid #C0C0C0;
     border-radius: 5px;
     background: transparent;
-    width: 70px;
-    height: 70px;
-    display: block;
 }
-.item__button:not(:last-child){
+.itemButton:not(:last-child){
     margin-bottom: 20px;
 }

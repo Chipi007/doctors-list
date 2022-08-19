@@ -1,12 +1,12 @@
-.input__container{
+.inputContainer{
     position: relative;
     .common {
-        background: #FFFFFF;
+        padding: 0px 20px;
         border: 2px solid #C0C0C0;
         border-radius: 7px;
-        padding: 0px 20px;
+        background: #FFFFFF;
     }
-    .search__input{
+    .searchInput{
         @extend .common;
         width: 600px;
         height: 60px;
@@ -17,7 +17,7 @@
             color: #C0C0C0;
         }
     }
-    .form__input{
+    .formInput{
         @extend .common;
         width: 389px;
         height: 50px;

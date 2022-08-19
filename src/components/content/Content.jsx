@@ -6,7 +6,7 @@ export const Content = () => {
 
   return (
     <div className={s.content}>
-      <div className={s.content__title}>Список докторов</div>
+      <div className={s.contentTitle}>Список докторов</div>
       <Item/>
     </div>
   )

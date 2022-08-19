@@ -1,28 +1,20 @@
 import React from 'react'
+import cx from 'classnames';
 import s from "./button.module.scss"
 
 export const Button = ({typeBtn, children, type, onClick}) => {
 
-  const neededClass = (typeBtn) => {
-    switch(typeBtn){
-      case 'add-button':
-        return s.add__button;
-      case 'primary-button':
-        return s.primary__button;
-      case 'secondary-button':
-        return s.secondary__button;
-      case 'search-button':
-        return s.search__button;
-      case 'photo-button':
-        return s.photo__button;
-      case 'item-button':
-        return s.item__button;    
-      default:
-        return "";    
-    }
-  }
+  const neededClass = (styles, buttonVariants) =>
+  Object.keys(buttonVariants).map(key => {
+    const value = buttonVariants[key];
+    return styles[`${value}`];
+  });
+
+  const classes = neededClass(s, {
+    typeBtn, 
+  });
 
   return (
-    <button type = {type} className={neededClass(typeBtn)} onClick = {onClick}>{children}</button>
+    <button type = {type} className={cx(classes)} onClick = {onClick}>{children}</button>
   )
 }

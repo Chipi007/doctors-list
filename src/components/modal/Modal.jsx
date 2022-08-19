@@ -31,88 +31,88 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
     <div className='modal'>
       {modalOpen && (
         <div className={s.modal} onClick = {() => setModalOpen(false)}>
-          <div className={s.modal__container} onClick = {e => e.stopPropagation()}>
-            <div className={s.modal__title}>{neededTitle} доктора
+          <div className={s.modalContainer} onClick = {e => e.stopPropagation()}>
+            <div className={s.modalTitle}>{neededTitle} доктора
             </div>
             {(type === 'add-modal' || type === 'edit-modal') && (
               <form action="#">
-                <div className={s.form__container}>
-                  <div className={s.modal__column}>
-                    <div className={s.input__group}>
-                      <Label text = 'Фамилия Имя Отчество' className='modal__label'/>
-                      <Input typeInp='form-input' placeholder='Старовойтова Анастасия Ивановна' name = 'name' value = '' onChange = ''/>
+                <div className={s.formContainer}>
+                  <div className={s.modalColumn}>
+                    <div className={s.inputGroup}>
+                      <Label text = 'Фамилия Имя Отчество' className='modalLabel'/>
+                      <Input typeInp='formInput' placeholder='Старовойтова Анастасия Ивановна' name = 'name' value = '' onChange = ''/>
                     </div>
-                    <div className={s.input__group}>
-                      <Label text = 'Специализация' className='modal__label'/>
-                      <Input typeInp='form-input' placeholder='Отоларинголог' name = 'profession' value = '' onChange = ''/>
+                    <div className={s.inputGroup}>
+                      <Label text = 'Специализация' className='modalLabel'/>
+                      <Input typeInp='formInput' placeholder='Отоларинголог' name = 'profession' value = '' onChange = ''/>
                     </div>
-                    <div className={s.input__group}>
-                      <Label text = 'Название клиники' className='modal__label'/>
-                      <Input typeInp='form-input' placeholder='Клиника Invitro' name = 'hospital' value = '' onChange = ''/>
+                    <div className={s.inputGroup}>
+                      <Label text = 'Название клиники' className='modalLabel'/>
+                      <Input typeInp='formInput' placeholder='Клиника Invitro' name = 'hospital' value = '' onChange = ''/>
                     </div>
-                    <div className={s.input__group}>
-                      <Label text = 'Cтаж' className='modal__label'/>
-                      <Input typeInp='form-input' placeholder='15' name = 'experience' value = '' onChange = ''/>
+                    <div className={s.inputGroup}>
+                      <Label text = 'Cтаж' className='modalLabel'/>
+                      <Input typeInp='formInput' placeholder='15' name = 'experience' value = '' onChange = ''/>
                     </div>
                   </div>
-                  <div className={s.modal__column}>
-                    <div className={s.input__group}>
-                      <Label text = 'Фото' className='modal__label'/>
-                      <Button type = 'button' typeBtn = 'photo-button'>
+                  <div className={s.inputGroup}>
+                    <div className={s.inputGroup}>
+                      <Label text = 'Фото' className='modalLabel'/>
+                      <Button type = 'button' typeBtn = 'photoButton'>
                         <img src = {Upload} alt = 'upload'/>{neededButtonText} фото
                       </Button>
                     </div>
-                    <div className={s.input__group}>
-                      <Label text = 'Место учёбы' className='modal__label'/>
-                      <Input typeInp='form-input' placeholder='Тверская медицинская академия' name = 'education' value = '' onChange = ''/>
+                    <div className={s.inputGroup}>
+                      <Label text = 'Место учёбы' className='modalLabel'/>
+                      <Input typeInp='formInput' placeholder='Тверская медицинская академия' name = 'education' value = '' onChange = ''/>
                     </div>
-                    <div className={s.input__group}>
-                      <Label text = 'Адрес клиники' className='modal__label'/>
-                      <Input typeInp='form-input' placeholder='г. Тверь, Тверской проспект д.15' name = 'address' value = '' onChange = ''/>
+                    <div className={s.inputGroup}>
+                      <Label text = 'Адрес клиники' className='modalLabel'/>
+                      <Input typeInp='formInput' placeholder='г. Тверь, Тверской проспект д.15' name = 'address' value = '' onChange = ''/>
                     </div>
-                    <div className={s.input__group}>
-                      <Label text = 'Цена приёма' className='modal__label'/>
-                      <Input typeInp='form-input' placeholder='1000' name = 'price' value = '' onChange = ''/>
+                    <div className={s.inputGroup}>
+                      <Label text = 'Цена приёма' className='modalLabel'/>
+                      <Input typeInp='formInput' placeholder='1000' name = 'price' value = '' onChange = ''/>
                     </div>
                   </div>
                 </div>
-                <Button type = 'submit' typeBtn = 'primary-button'>{neededButtonText}</Button>
-                <Button type = 'reset' typeBtn = 'secondary-button'>Очистить</Button>
+                <Button type = 'submit' typeBtn = 'primaryButton'>{neededButtonText}</Button>
+                <Button type = 'reset' typeBtn = 'secondaryButton'>Очистить</Button>
               </form>
             )}
             {type === 'observe-modal' && (
-              <div className={s.observe_form__container}>
-                <div className={s.modal__column}>
-                  <Avatar src = {Doctor} alt = 'Doctor' className = 'item-avatar'/>
+              <div className={s.observeFormContainer}>
+                <div className={s.modalColumn}>
+                  <Avatar src = {Doctor} alt = 'Doctor' className = 'itemAvatar'/>
                 </div>
-                <div className={s.modal__column}>
-                  <div className={s.text__group}>
-                    <Label text = 'Фамилия Имя Отчество' className='item__label'/>
-                    <TextItem className = 'normal__text'>Скворцова Анастасия Владимировна</TextItem>
+                <div className={s.modalColumn}>
+                  <div className={s.textGroup}>
+                    <Label text = 'Фамилия Имя Отчество' className='itemLabel'/>
+                    <TextItem className = 'normalText'>Скворцова Анастасия Владимировна</TextItem>
                   </div>
-                  <div className={s.text__group}>
-                    <Label text = 'Специализация' className='item__label'/>
-                    <TextItem className = 'normal__text'>Отоларинголог</TextItem>
+                  <div className={s.textGroup}>
+                    <Label text = 'Специализация' className='itemLabel'/>
+                    <TextItem className = 'normalText'>Отоларинголог</TextItem>
                   </div>
-                  <div className={s.text__group}>
-                    <Label text = 'Название клиники' className='item__label'/>
+                  <div className={s.textGroup}>
+                    <Label text = 'Название клиники' className='itemLabel'/>
                     <TextItem className = 'normal__text'>Клиника Invitro</TextItem>
                   </div>
-                  <div className={s.text__group}>
-                    <Label text = 'Адрес клиники' className='item__label'/>
-                    <TextItem className = 'normal__text'>г. Тверь, Тверской проспект д.15</TextItem>
+                  <div className={s.textGroup}>
+                    <Label text = 'Адрес клиники' className='itemLabel'/>
+                    <TextItem className = 'normalText'>г. Тверь, Тверской проспект д.15</TextItem>
                   </div>
-                  <div className={s.text__group}>
-                    <Label text = 'Стаж' className='item__label'/>
-                    <TextItem className = 'normal__text'>15 лет</TextItem>
+                  <div className={s.textGroup}>
+                    <Label text = 'Стаж' className='itemLabel'/>
+                    <TextItem className = 'normalText'>15 лет</TextItem>
                   </div>
-                  <div className={s.text__group}>
-                    <Label text = 'Место учёбы' className='item__label'/>
-                    <TextItem className = 'normal__text'>Тверская медицинская академия</TextItem>
+                  <div className={s.textGroup}>
+                    <Label text = 'Место учёбы' className='itemLabel'/>
+                    <TextItem className = 'normalText'>Тверская медицинская академия</TextItem>
                   </div>
-                  <div className={s.text__group}>
-                    <Label text = 'Цена приёма' className='item__label'/>
-                    <TextItem className = 'normal__text'>1000₽</TextItem>
+                  <div className={s.textGroup}>
+                    <Label text = 'Цена приёма' className='itemLabel'/>
+                    <TextItem className = 'normalText'>1000₽</TextItem>
                   </div>
                 </div>
               </div>

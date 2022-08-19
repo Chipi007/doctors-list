@@ -3,7 +3,7 @@ import s from './avatar.module.scss'
 
 export const Avatar = ({src, alt, className}) => {
   return (
-    <div className={s.avatar__container}>
+    <div className={s.avatarContainer}>
         <img src={src} alt={alt} className={className}/>
     </div>
   )

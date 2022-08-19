@@ -15,12 +15,12 @@ export const Header = () => {
   
   return (
     <div className={s.header}>
-        <div className={s.header__container}>
-            <div className="logo__container">
+        <div className={s.headerContainer}>
+            <div className={s.logoContainer}>
                 <img src={Logo} alt="Logo" />
             </div>
-            <Input placeholder="Поиск..." typeInp = 'search-input'/>
-            <Button type = 'button' typeBtn="add-button" value='add-button' onClick = {handleAddButton}>Добавить</Button>
+            <Input placeholder="Поиск..." typeInp = 'searchInput'/>
+            <Button type = 'button' typeBtn="addButton" value='add-button' onClick = {handleAddButton}>Добавить</Button>
         </div>
         <Modal modalOpen = {modalOpen} setModalOpen = {setModalOpen} type = 'add-modal'/>
     </div>

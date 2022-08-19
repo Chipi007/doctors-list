@@ -5,12 +5,12 @@ export const TextItem = ({className, children}) => {
 
   const neededClass = (className) => {
     switch (className){
-      case 'normal__text':
-        return s.normal__text;
-      case 'big__text':
-        return s.big__text;
-       case 'little__text':
-        return s.little__text;
+      case 'normalText':
+        return s.normalText;
+      case 'bigText':
+        return s.bigText;
+       case 'littleText':
+        return s.littleText;
       default:
         return '';     
     }
