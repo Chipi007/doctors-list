@@ -1,21 +1,21 @@
 import React from 'react'
 import s from './text.module.scss'
+import cx from 'classnames';
 
 export const TextItem = ({className, children}) => {
 
-  const neededClass = (className) => {
-    switch (className){
-      case 'normalText':
-        return s.normalText;
-      case 'bigText':
-        return s.bigText;
-       case 'littleText':
-        return s.littleText;
-      default:
-        return '';     
-    }
-  }
+  const neededClass = (styles, textVariants) =>
+  Object.keys(textVariants).map(key => {
+    const value = textVariants[key];
+    return styles[`${value}`];
+  });
+
+  const classes = neededClass(s, {
+    className, 
+  });
+
+
   return (
-    <div className={neededClass(className)}>{children}</div>
+    <div className={cx(classes)}>{children}</div>
   )
 }

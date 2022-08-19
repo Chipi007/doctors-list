@@ -1,19 +1,20 @@
 import React from 'react'
 import s from './label.module.scss'
+import cx from 'classnames';
 
 export const Label = ({text, className}) => {
 
-  const neededClassName = () => {
-    switch (className){
-      case 'itemLabel':
-        return s.itemLabel;
-      case 'modalLabel':
-        return s.modalLabel;
-      default:
-        return '';    
-    }
-  }
+  const neededClass = (styles, labelVariants) =>
+  Object.keys(labelVariants).map(key => {
+    const value = labelVariants[key];
+    return styles[`${value}`];
+  });
+
+  const classes = neededClass(s, {
+    className, 
+  });
+
   return (
-    <label className={neededClassName(className)}>{text}</label>
+    <label className={cx(classes)}>{text}</label>
   )
 }
