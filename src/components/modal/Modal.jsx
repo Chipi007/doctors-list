@@ -28,7 +28,7 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
   }, [type])
   
   return (
-    <div className='modal'>
+    <div>
       {modalOpen && (
         <div className={s.modal} onClick = {() => setModalOpen(false)}>
           <div className={s.modalContainer} onClick = {e => e.stopPropagation()}>

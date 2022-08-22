@@ -1,31 +1,32 @@
+.common {
+    padding: 0px 20px;
+    border: 2px solid #C0C0C0;
+    border-radius: 7px;
+    background: #FFFFFF;
+}
+
 .inputContainer{
     position: relative;
-    .common {
-        padding: 0px 20px;
-        border: 2px solid #C0C0C0;
-        border-radius: 7px;
-        background: #FFFFFF;
-    }
-    .searchInput{
-        @extend .common;
-        width: 600px;
-        height: 60px;
-        font-size: 24px;
-  
-        &::placeholder{
-            font-size: 24px;
-            color: #C0C0C0;
-        }
-    }
-    .formInput{
-        @extend .common;
-        width: 389px;
-        height: 50px;
-        font-size: 18px;
-
-        &::placeholder{
-            font-size: 18px;
-            color: #C0C0C0;
-        }
-    }  
 }
+.searchInput{
+    @extend .common;
+    width: 600px;
+    height: 60px;
+    font-size: 24px;
+
+    &::placeholder{
+        font-size: 24px;
+        color: #C0C0C0;
+    }
+}
+.formInput{
+    @extend .common;
+    width: 389px;
+    height: 50px;
+    font-size: 18px;
+
+    &::placeholder{
+        font-size: 18px;
+        color: #C0C0C0;
+    }
+}  

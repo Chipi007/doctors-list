@@ -3,14 +3,9 @@ import SearchButton from "../../img/search.svg"
 import { Button } from '../button/Button'
 import s from "./input.module.scss"
 import cx from 'classnames';
+import { neededClass } from '../../utils/util';
 
 export const Input = ({typeInp, placeholder}) => {
-  
-  const neededClass = (styles, inputVariants) =>
-  Object.keys(inputVariants).map(key => {
-    const value = inputVariants[key];
-    return styles[`${value}`];
-  });
 
   const classes = neededClass(s, {
     typeInp, 
