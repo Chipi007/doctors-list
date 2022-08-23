@@ -1,0 +1,17 @@
+.inputContainer{
+    position: relative;
+}
+.searchInput{
+    padding: 0px 20px;
+    border: 2px solid #C0C0C0;
+    border-radius: 7px;
+    background: #FFFFFF;
+    width: 600px;
+    height: 60px;
+    font-size: 24px;
+
+    &::placeholder{
+        font-size: 24px;
+        color: #C0C0C0;
+    }
+}

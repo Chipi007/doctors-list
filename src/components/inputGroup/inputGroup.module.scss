@@ -1,0 +1,24 @@
+.inputGroup{
+    margin: 0 0 20px;
+}
+label{
+    display: block;
+    margin: 0 0 8px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 83.9%;
+}
+input{
+    padding: 0px 20px;
+    border: 2px solid #C0C0C0;
+    border-radius: 7px;
+    background: #FFFFFF;
+    width: 389px;
+    height: 50px;
+    font-size: 18px;
+
+    &::placeholder{
+        font-size: 18px;
+        color: #C0C0C0;
+    }
+}  
