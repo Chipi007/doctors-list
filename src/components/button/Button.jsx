@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames';
 import s from "./button.module.scss"
-import { neededClass } from '../../utils/util';
+import { neededClass } from '../../utils/neededClass';
 
 export const Button = ({typeBtn, children, type, onClick}) => {
   

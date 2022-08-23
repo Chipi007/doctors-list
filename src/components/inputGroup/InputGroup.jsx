@@ -1,10 +1,12 @@
 import React from 'react'
+import s from './inputGroup.module.scss'
 
-export const InputGroup = () => {
+export const InputGroup = (props) => {
+  const {name, value, placeholder, label, onChange} = props;
   return (
     <div className={s.inputGroup}>
-        <label>{text}</label>
-        <input type="text" placeholder={placeholder}/>
+        <label>{label}</label>
+        <input type="text" name = {name} value = {value} placeholder={placeholder} onChange = {onChange}/>
     </div>
 
   )

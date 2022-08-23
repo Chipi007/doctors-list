@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './label.module.scss'
 import cx from 'classnames';
-import { neededClass } from '../../utils/util';
+import { neededClass } from '../../utils/neededClass';
 
 export const Label = ({text, className}) => {
 
