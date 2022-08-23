@@ -7,6 +7,7 @@ import Upload from '../../img/upload.svg'
 import { Avatar } from '../avatar/Avatar'
 import Doctor from '../../img/doctor.svg'
 import { TextItem } from '../text/TextItem';
+import { InputGroup } from '../inputGroup/inputGroup';
 
 export const Modal = ({type, modalOpen, setModalOpen}) => {
 
@@ -26,6 +27,68 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
   const neededButtonText = useMemo(() => {
     return type === 'add-modal' ? 'Добавить' : 'Изменить'
   }, [type])
+
+  const firstInputProperties = [
+  {
+    id: 1,
+    name: 'fio',
+    typeInp: 'formInput',
+    placeholder: 'Старовойтова Анастасия Ивановна',
+    label: 'Фамилия Имя Отчество',
+    labelClass: 'modalLabel'
+  }, 
+  {
+    id: 2,
+    name: 'profession',
+    typeInp: 'formInput',
+    placeholder: 'Отоларинголог',
+    label: 'Специализация',
+    labelClass: 'modalLabel'
+  }, 
+  {
+    id: 3,
+    name: 'hospital',
+    typeInp: 'formInput',
+    placeholder: 'Клиника Invitro',
+    label: 'Название клиники',
+    labelClass: 'modalLabel'
+  }, 
+  {
+    id: 4,
+    name: 'experience',
+    typeInp: 'formInput',
+    placeholder: '15',
+    label: 'Cтаж',
+    labelClass: 'modalLabel'
+  }, 
+]
+
+const secondInputProperties = [
+  {
+    id: 5,
+    name: 'education',
+    typeInp: 'formInput',
+    placeholder: 'Тверская медицинская академия',
+    label: 'Место учёбы',
+    labelClass: 'modalLabel'
+  }, 
+  {
+    id: 6,
+    name: 'price',
+    typeInp: 'formInput',
+    placeholder: 'г. Тверь, Тверской проспект д.15',
+    label: 'Адрес клиники',
+    labelClass: 'modalLabel'
+  }, 
+  {
+    id: 7,
+    name: 'price',
+    typeInp: 'formInput',
+    placeholder: '1000',
+    label: 'Цена приёма',
+    labelClass: 'modalLabel'
+  },
+]
   
   return (
     <div>
@@ -38,6 +101,10 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
               <form action="#">
                 <div className={s.formContainer}>
                   <div className={s.modalColumn}>
+                    {firstInputProperties.map((input) => (
+                      <InputGroup key = {input.id} {...input}></InputGroup>
+                    )
+                    )}
                     <div className={s.inputGroup}>
                       <Label text = 'Фамилия Имя Отчество' className='modalLabel'/>
                       <Input typeInp='formInput' placeholder='Старовойтова Анастасия Ивановна' name = 'name' value = '' onChange = ''/>
