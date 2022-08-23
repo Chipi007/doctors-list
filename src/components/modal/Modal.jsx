@@ -102,7 +102,7 @@ const secondInputProperties = [
                 <div className={s.formContainer}>
                   <div className={s.modalColumn}>
                     {firstInputProperties.map((input) => (
-                      <InputGroup key = {input.id} {...input}></InputGroup>
+                      <InputGroup key = {input.id} {...input} value = {input.name}></InputGroup>
                     )
                     )}
                     <div className={s.inputGroup}>
