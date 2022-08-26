@@ -1,8 +1,6 @@
-import React, { useMemo }from 'react'
-import { useState } from 'react';
+import React, { useMemo, useState }from 'react'
 import s from './modal.module.scss';
 import { Button } from '../button/Button';
-import { Label } from '../label/Label';
 import { Avatar } from '../avatar/Avatar'
 import { InputGroup } from '../inputGroup/InputGroup';
 import { TextGroup } from '../textGroup/TextGroup';
@@ -43,11 +41,15 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
   const neededButtonText = useMemo(() => {
     return type === 'add-modal' ? 'Добавить' : 'Изменить'
   }, [type])
+
+  const closeModal = () => {
+    setModalOpen(false);
+  }
   
   return (
     <div>
       {modalOpen && (
-        <div className={s.modal} onClick = {() => setModalOpen(false)}>
+        <div className={s.modal} onClick = {closeModal}>
           <div className={s.modalContainer} onClick = {e => e.stopPropagation()}>
             <div className={s.modalTitle}>{neededTitle} доктора</div>
             {(type === 'add-modal' || type === 'edit-modal') && (
@@ -60,7 +62,7 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
                   </div>
                   <div className={s.modalColumn}>
                     <div className={s.inputGroup}>
-                      <Label text = 'Фото' className='modalLabel'/>
+                      <label>Фото</label>
                       <Button type = 'button' typeBtn = 'photoButton'>
                         <img src = {Upload} alt = 'upload'/>{neededButtonText} фото
                       </Button>
