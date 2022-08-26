@@ -45,6 +45,11 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
   const closeModal = () => {
     setModalOpen(false);
   }
+
+  const handleSubmit = (e) => {
+    console.log(values)
+    e.preventDefault();
+  }
   
   return (
     <div>
@@ -53,7 +58,7 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
           <div className={s.modalContainer} onClick = {e => e.stopPropagation()}>
             <div className={s.modalTitle}>{neededTitle} доктора</div>
             {(type === 'add-modal' || type === 'edit-modal') && (
-              <form action="#">
+              <form action="#" onSubmit={(e) => handleSubmit(e)}>
                 <div className={s.formContainer}>
                   <div className={s.modalColumn}>
                   {firstInputProperties.map((input) => (
