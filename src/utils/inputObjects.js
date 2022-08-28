@@ -5,8 +5,8 @@ export const firstInputProperties = [
       placeholder: 'Старовойтова Анастасия Ивановна',
       label: 'Фамилия Имя Отчество',
       required: true,
-      pattern: '[А-Ая-a ]{10,100}$',
-      errorMessage: 'Поле должно содержать только буквенные символы'
+      pattern: '[A-Za-zЁёА-я ]{1,100}$',
+      errorMessage: 'Поле может содержать только буквенные символы'
     }, 
     {
       id: 2,
@@ -14,8 +14,8 @@ export const firstInputProperties = [
       placeholder: 'Отоларинголог',
       label: 'Специализация',
       required: true,
-      pattern: '[А-Ая-a ]{1,30}$',
-      errorMessage: 'Поле должно содержать только буквенные символы'
+      pattern: '[A-Za-zЁёА-я ]{1,30}$',
+      errorMessage: 'Поле может содержать только буквенные символы'
     }, 
     {
       id: 3,
@@ -23,8 +23,8 @@ export const firstInputProperties = [
       placeholder: 'Клиника Invitro',
       label: 'Название клиники',
       required: true,
-      pattern: '[А-Ая-a "\']{1,30}$',
-      errorMessage: 'Поле должно содержать только буквенные символы'
+      pattern: '[A-Za-zЁёА-я "\']{1,30}$',
+      errorMessage: 'Поле может содержать только буквенные символы'
     }, 
     {
       id: 4,
@@ -33,7 +33,7 @@ export const firstInputProperties = [
       label: 'Cтаж',
       required: true,
       pattern: '^[0-9]{1,2}$',
-      errorMessage: 'Поле должно содержать не больше двух числовых символов'
+      errorMessage: 'Поле может содержать не больше двух числовых символов'
     }, 
   ]
   
@@ -44,8 +44,8 @@ export const firstInputProperties = [
       placeholder: 'Тверская медицинская академия',
       label: 'Место учёбы',
       required: true,
-      pattern: '[А-Ая-a .]{1,100}$',
-      errorMessage: 'Поле должно содержать только буквенные символы и точку'
+      pattern: '[A-Za-zЁёА-я .]{1,100}$',
+      errorMessage: 'Поле может содержать только буквенные символы и точку'
     }, 
     {
       id: 6,
@@ -53,7 +53,7 @@ export const firstInputProperties = [
       placeholder: 'г. Тверь, Тверской проспект д.15',
       label: 'Адрес клиники',
       required: true,
-      errorMessage: 'Поле не должно быть пустым'
+      errorMessage: 'Поле не может быть пустым'
     }, 
     {
       id: 7,
@@ -62,6 +62,6 @@ export const firstInputProperties = [
       label: 'Цена приёма',
       required: true,
       pattern: '^[0-9]{1,2}$',
-      errorMessage: 'Поле должно содержать не больше двух числовых символов'
+      errorMessage: 'Поле может содержать не больше двух числовых символов'
     },
   ]
