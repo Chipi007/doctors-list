@@ -3,8 +3,7 @@ import s from './itemGroup.module.scss'
 import cx from 'classnames';
 import { neededClass } from '../../utils/neededClass';
 
-export const ItemGroup = (props) => {
-    const {classNameLabel, classNameItem, valueLabel, valueItem} = props;
+export const ItemGroup = ({classNameLabel, classNameItem, valueLabel, valueItem}) => {
 
     const classesForLabel = neededClass(s, {
         classNameLabel
