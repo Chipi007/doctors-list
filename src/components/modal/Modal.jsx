@@ -11,10 +11,10 @@ import Doctor from '../../img/doctor.svg'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const LettersError = 'Поле может содержать только буквенные символы';
+const LettersError = 'Поле может содержать не меньше 5 буквенных символов';
 const emptyError = 'Поле не может быть пустым';
 const NumbersError = 'Поле может содержать не больше 5 числовых символов'
-const LettersAndPointError = 'Поле может содеражть только буквенные символы и кавычки'
+const LettersAndPointError = 'Поле может содеражть не меньше 5 буквенных символов и кавычек'
 
 const initialValues = {
   fio: '',
@@ -27,15 +27,14 @@ const initialValues = {
 }
 
 const onSubmit = (values) => {
-
 }
 
 const validationSchema = Yup.object({
-  fio: Yup.string().matches(/^[A-Za-zЁёА-я ]+$/, LettersError).required(emptyError),
-  profession: Yup.string().matches(/^[A-Za-zЁёА-я ]+$/, LettersError).required(emptyError),
-  hospital: Yup.string().matches(/^[A-Za-zЁёА-я ]+$/, LettersError).required(emptyError),
+  fio: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
+  profession: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
+  hospital: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
   experience: Yup.string().matches(/^(\d){1,5}$/g, NumbersError).required(emptyError),
-  education: Yup.string().matches(/^[A-Za-zЁёА-я ]+$/, LettersAndPointError).required(emptyError),
+  education: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersAndPointError).required(emptyError),
   address: Yup.string().required(emptyError),
   price: Yup.string().matches(/^(\d){1,5}$/g, NumbersError).required(emptyError)
 })
@@ -48,6 +47,9 @@ const formik = useFormik({
   validationSchema
 })
 
+const resetForm = (e) => {
+  formik.resetForm()
+}
 
   const neededTitle = useMemo(() => {
     switch (type){
@@ -96,8 +98,8 @@ const formik = useFormik({
                     )}
                   </div>
                 </div>
-                <Button type = 'submit' typeBtn = 'primaryButton'>{neededButtonText}</Button>
-                <Button type = 'reset' typeBtn = 'secondaryButton'>Очистить</Button>
+                <Button type = 'submit' typeBtn = 'primaryButton' disabled = {!(formik.dirty && formik.isValid)}>{neededButtonText}</Button>
+                <Button type = 'reset' typeBtn = 'secondaryButton' onClick= {(e) => resetForm(e)}>Очистить</Button>
               </form>
             )}
             {type === 'observe-modal' && (
