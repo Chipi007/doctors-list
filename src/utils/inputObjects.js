@@ -36,6 +36,7 @@ export const firstInputProperties = [
       id: 6,
       name: 'address',
       placeholder: 'г. Тверь, Тверской проспект д.15',
+      label: 'Адрес клиники',
     }, 
     {
       id: 7,

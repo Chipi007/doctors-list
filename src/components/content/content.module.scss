@@ -1,10 +1,22 @@
 .content{
     padding: 90px 208px 70px;
 }
+.contentConatiner{
+    display: flex;
+    flex-wrap: wrap;
+}
 .contentTitle{
     margin: 0 0 55px;
     font-weight: 600;
     font-size: 59px;
     line-height: 83.9%;
+    text-align: center;
+}
+.contentHello{
+    width: 100%;
+    padding: 37px 0px 37px 60px; 
+    border-radius: 12px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
 }

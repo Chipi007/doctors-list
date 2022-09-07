@@ -7,8 +7,8 @@
     width: 144px;
     height: 235px;
     margin: 0 50px 0 0;
-    //align-self: center;
 }
 .avatarContainer img{
-    @extend .common
+    @extend .common;
+    object-fit: cover;
 }

@@ -6,15 +6,16 @@ import { InputGroup } from '../inputGroup/InputGroup';
 import { TextGroup } from '../textGroup/TextGroup';
 import { firstInputProperties, secondInputProperties } from '../../utils/inputObjects';
 import { textProperties } from '../../utils/textObjects';
-import Upload from '../../img/upload.svg'
 import Doctor from '../../img/doctor.svg'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addDoctor } from '../../features/doctor/doctorSlice';
+import { v4 as uuid} from 'uuid';
 
-const LettersError = 'Поле может содержать не меньше 5 буквенных символов';
+const LettersError = 'Введите не меньше 5 буквенных символов';
 const emptyError = 'Поле не может быть пустым';
-const NumbersError = 'Поле может содержать не больше 5 числовых символов'
-const LettersAndPointError = 'Поле может содеражть не меньше 5 буквенных символов и кавычек'
+const NumbersError = 'Введите не больше 5 числовых символов';
 
 const initialValues = {
   fio: '',
@@ -24,9 +25,7 @@ const initialValues = {
   education: '',
   address: '',
   price: '',
-}
-
-const onSubmit = (values) => {
+  photo: '',
 }
 
 const validationSchema = Yup.object({
@@ -34,12 +33,24 @@ const validationSchema = Yup.object({
   profession: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
   hospital: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
   experience: Yup.string().matches(/^(\d){1,5}$/g, NumbersError).required(emptyError),
-  education: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersAndPointError).required(emptyError),
+  education: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
   address: Yup.string().required(emptyError),
   price: Yup.string().matches(/^(\d){1,5}$/g, NumbersError).required(emptyError)
 })
 
 export const Modal = ({type, modalOpen, setModalOpen}) => {
+
+  const dispatch = useDispatch();
+
+  const onSubmit = (values) => {
+    dispatch(addDoctor({
+      id: uuid(),
+      ...values,
+    }
+    ))
+    formik.resetForm();
+    closeModal();
+  }
 
 const formik = useFormik({
   initialValues,
@@ -72,6 +83,22 @@ const resetForm = (e) => {
     setModalOpen(false);
   }
 
+  const handleInputChange = async (e) => {
+    const file = e.target.files;
+    const data = new FormData();
+    data.append('file', file[0]);
+    data.append('upload_preset', 'hy0us5rz');
+    const res = await fetch(
+      'https://api.cloudinary.com/v1_1/dxe0eimes/image/upload',{
+        method: 'POST',
+        body: data
+      }
+    )
+    const files = await res.json();
+    formik.setFieldValue('photo', files.secure_url);
+
+  }
+
   return (
     <div>
       {modalOpen && (
@@ -89,9 +116,9 @@ const resetForm = (e) => {
                   <div className={s.modalColumn}>
                     <div className={s.inputGroup}>
                       <label>Фото</label>
-                      <Button type = 'button' typeBtn = 'photoButton'>
-                        <img src = {Upload} alt = 'upload'/>{neededButtonText} фото
-                      </Button>
+                      <label htmlFor = 'file' className = {s.uploadButton}>{neededButtonText} фото</label>
+                      <input name = 'photo' className={s.hiddenButton} id = 'file' onChange={e => {formik.handleChange(e); handleInputChange(e)}} type = 'file'/>
+                      <span className={s.span} htmlFor="file">{formik.values.photo.substring(62)}</span>
                     </div>
                     {secondInputProperties.map((input) => (
                       <InputGroup key = {input.id} {...input} value = {formik.values[input.name]} onChange = {formik.handleChange} error = {formik.errors[input.name]} touched = {formik.touched[input.name]} onBlur = {formik.handleBlur}/>)
