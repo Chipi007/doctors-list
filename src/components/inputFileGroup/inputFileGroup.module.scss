@@ -1,0 +1,36 @@
+.inputGroup{
+    margin: 0 0 25px;
+}
+.uploadButton{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px 0 43px;
+    margin: 0 10px 0 0;
+    border-radius: 7px;
+    background: rgba(41, 209, 179, 0.45);
+    width: 191px;
+    height: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 83.9%;
+    color: #FFFFFF;
+
+    &:after{
+        content: url('../../img/upload.svg');
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        bottom: auto;
+        right: auto;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+    }
+}
+.hiddenButton{
+    display: none;
+}
+.span{
+    font-size: 14px;
+}

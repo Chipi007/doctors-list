@@ -8,14 +8,11 @@ import { firstInputProperties, secondInputProperties } from '../../utils/inputOb
 import { textProperties } from '../../utils/textObjects';
 import Doctor from '../../img/doctor.svg'
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addDoctor } from '../../features/doctor/doctorSlice';
 import { v4 as uuid} from 'uuid';
-
-const LettersError = 'Введите не меньше 5 буквенных символов';
-const emptyError = 'Поле не может быть пустым';
-const NumbersError = 'Введите не больше 5 числовых символов';
+import { validationSchema } from './validation';
+import { InputFileGroup } from '../inputFileGroup/InputFileGroup';
 
 const initialValues = {
   fio: '',
@@ -27,16 +24,6 @@ const initialValues = {
   price: '',
   photo: '',
 }
-
-const validationSchema = Yup.object({
-  fio: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
-  profession: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
-  hospital: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
-  experience: Yup.string().matches(/^(\d){1,5}$/g, NumbersError).required(emptyError),
-  education: Yup.string().matches(/^([A-Za-zЁёА-я ]){5,50}$/, LettersError).required(emptyError),
-  address: Yup.string().required(emptyError),
-  price: Yup.string().matches(/^(\d){1,5}$/g, NumbersError).required(emptyError)
-})
 
 export const Modal = ({type, modalOpen, setModalOpen}) => {
 
@@ -99,6 +86,11 @@ const resetForm = (e) => {
 
   }
 
+  const handleInputFileChange = (e) => {
+    formik.handleChange(e); 
+    handleInputChange(e)
+  } 
+
   return (
     <div>
       {modalOpen && (
@@ -114,12 +106,7 @@ const resetForm = (e) => {
                   )}
                   </div>
                   <div className={s.modalColumn}>
-                    <div className={s.inputGroup}>
-                      <label>Фото</label>
-                      <label htmlFor = 'file' className = {s.uploadButton}>{neededButtonText} фото</label>
-                      <input name = 'photo' className={s.hiddenButton} id = 'file' onChange={e => {formik.handleChange(e); handleInputChange(e)}} type = 'file'/>
-                      <span className={s.span} htmlFor="file">{formik.values.photo.substring(62)}</span>
-                    </div>
+                    <InputFileGroup textBtn = {neededButtonText} handleChange = {handleInputFileChange} photoName = {formik.values.photo.substring(62)}/>
                     {secondInputProperties.map((input) => (
                       <InputGroup key = {input.id} {...input} value = {formik.values[input.name]} onChange = {formik.handleChange} error = {formik.errors[input.name]} touched = {formik.touched[input.name]} onBlur = {formik.handleBlur}/>)
                     )}
