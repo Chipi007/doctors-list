@@ -25,9 +25,17 @@ export const doctorSlice = createSlice({
                 ...action.payload
             });            
             window.localStorage.setItem('doctors', JSON.stringify(doctorsArray))
+        },
+        deleteDoctor: (state, action) => {
+            const doctorsList = window.localStorage.getItem('doctors');
+            if(doctorsList) {
+                const doctorsArray = JSON.parse(doctorsList).filter((doctor, index) => doctor.id !== action.payload);
+                window.localStorage.setItem('doctors', JSON.stringify(doctorsArray));
+                state.doctorsList = doctorsArray;
+            }
         }
     }
 })
 
-export const {addDoctor} = doctorSlice.actions;
+export const {addDoctor, deleteDoctor} = doctorSlice.actions;
 export default doctorSlice.reducer;

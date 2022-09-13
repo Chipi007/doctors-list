@@ -8,6 +8,8 @@ import { Button } from '../button/Button'
 import { Avatar } from '../avatar/Avatar'
 import { Modal } from '../modal/Modal'
 import { ItemGroup } from '../itemGroup/ItemGroup'
+import { useDispatch } from 'react-redux'
+import { deleteDoctor } from '../../features/doctor/doctorSlice'
 
 
 export const Item = ({...doctor}) => {
@@ -15,12 +17,18 @@ export const Item = ({...doctor}) => {
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [observeModalOpen, setObserveModalOpen] = useState(false); 
 
+    const dispatch = useDispatch();
+
     const handleEditButton = () =>{
         setEditModalOpen(true);
     }
 
     const handleObserveButton = () =>{
         setObserveModalOpen(true);
+    }
+
+    const handleDeleteButton = () =>{
+        dispatch(deleteDoctor(doctor.id));
     }
 
   return (
@@ -42,7 +50,7 @@ export const Item = ({...doctor}) => {
                 <Button type = 'button' typeBtn = 'itemButton' onClick={handleEditButton}>
                     <img src={Pen} alt="EditInfo" />
                 </Button>
-                <Button type = 'button' typeBtn = 'itemButton'>
+                <Button type = 'button' typeBtn = 'itemButton' onClick={handleDeleteButton}>
                     <img src={Cross} alt="DeleteInfo" />
                 </Button>
             </div>
