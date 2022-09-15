@@ -55,7 +55,7 @@ export const Item = ({...doctor}) => {
                 </Button>
             </div>
         </div>
-        <Modal modalOpen = {editModalOpen} setModalOpen = {setEditModalOpen} type = 'edit-modal'/>
+        <Modal modalOpen = {editModalOpen} setModalOpen = {setEditModalOpen} type = 'edit-modal' doctor = {doctor}/>
         <Modal modalOpen = {observeModalOpen} setModalOpen = {setObserveModalOpen} type = 'observe-modal'/>
     </div>
   )

@@ -1,8 +1,7 @@
 import React from 'react'
 import s from './textGroup.module.scss'
 
-export const TextGroup = (props) => {
-    const {name, title, value,} = props;
+export const TextGroup = ({name, title, value}) => {
     
     return (
         <div className={s.textGroup}>

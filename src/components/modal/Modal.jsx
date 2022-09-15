@@ -9,10 +9,11 @@ import { textProperties } from '../../utils/textObjects';
 import Doctor from '../../img/doctor.svg'
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { addDoctor } from '../../features/doctor/doctorSlice';
+import { addDoctor, updateDoctor } from '../../features/doctor/doctorSlice';
 import { v4 as uuid} from 'uuid';
 import { validationSchema } from './validation';
 import { InputFileGroup } from '../inputFileGroup/InputFileGroup';
+import { useEffect } from 'react';
 
 const initialValues = {
   fio: '',
@@ -25,16 +26,38 @@ const initialValues = {
   photo: '',
 }
 
-export const Modal = ({type, modalOpen, setModalOpen}) => {
+
+export const Modal = ({type, modalOpen, setModalOpen, doctor}) => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (values) => {
-    dispatch(addDoctor({
-      id: uuid(),
-      ...values,
+  useEffect(() => {
+    const isDoctor = type === 'edit-modal' && doctor;
+    if (isDoctor) {
+      formik.setValues({
+        ...doctor
+      });
     }
-    ))
+  }, [type, modalOpen, doctor])
+
+  const onSubmit = (values) => {
+    switch(type){
+      case 'add-modal':
+        dispatch(addDoctor({
+          id: uuid(),
+          ...values,
+        }
+        ))
+      break;
+      case 'edit-modal':
+        const doctorAsArray = Object.entries(doctor);
+        const filtered = doctorAsArray.filter(([key, value]) => key !== 'id');
+        const doctorsObjectWithoutId = Object.fromEntries(filtered);
+        if(JSON.stringify(doctorsObjectWithoutId) !== JSON.stringify(values)){
+          dispatch(updateDoctor({...doctor, ...values}))
+        }
+      break;
+    }
     formik.resetForm();
     closeModal();
   }
@@ -42,7 +65,8 @@ export const Modal = ({type, modalOpen, setModalOpen}) => {
 const formik = useFormik({
   initialValues,
   onSubmit,
-  validationSchema
+  validationSchema,
+  enableReinitialize: true
 })
 
 const resetForm = (e) => {
