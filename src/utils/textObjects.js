@@ -2,43 +2,36 @@ export const textProperties = [
     {
       id: 1,
       name: 'fio',
-      title: 'Фамилия Имя Отчество',
-      value: 'Старовойтова Анастасия Ивановна'
+      title: 'Фамилия Имя Отчество:',
     }, 
     {
       id: 2,
       name: 'profession',
-      title: 'Специализация',
-      value: 'Отоларинголог'
+      title: 'Специализация:',
     }, 
     {
       id: 3,
       name: 'hospital',
-      title: 'Название клиники',
-      value: 'Клиника Invitro'
+      title: 'Название клиники:',
     }, 
     {
       id: 4,
       name: 'experience',
-      title: 'Стаж',
-      value: '15'
+      title: 'Стаж:',
     }, 
     {
       id: 5,
       name: 'education',
-      title: 'Образование',
-      value: 'Тверская медицинская академия'
+      title: 'Образование:',
     }, 
     {
       id: 6,
       name: 'address',
-      title: 'Адрес клиники',
-      value: 'г. Тверь, Тверской проспект д.15'
+      title: 'Адрес клиники:',
     }, 
     {
       id: 7,
       name: 'price',
-      title: 'Цена приёма',
-      value: '1000'
+      title: 'Цена приёма:',
     },
   ]

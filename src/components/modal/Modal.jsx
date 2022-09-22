@@ -32,7 +32,7 @@ export const Modal = ({type, modalOpen, setModalOpen, doctor}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const isDoctor = type === 'edit-modal' && doctor;
+    const isDoctor = (type === 'edit-modal') && doctor;
     if (isDoctor) {
       formik.setValues({
         ...doctor
@@ -57,6 +57,7 @@ export const Modal = ({type, modalOpen, setModalOpen, doctor}) => {
           dispatch(updateDoctor({...doctor, ...values}))
         }
       break;
+      default: return '';
     }
     formik.resetForm();
     closeModal();
@@ -143,11 +144,11 @@ const resetForm = (e) => {
             {type === 'observe-modal' && (
               <div className={s.observeFormContainer}>
                 <div className={s.modalColumn}>
-                  <Avatar src = {Doctor} alt = 'Doctor' className = 'itemAvatar'/>
+                  <Avatar src = {doctor.photo ? doctor.photo : Doctor} alt = 'Doctor' className = 'itemAvatar'/>
                 </div>
                 <div className={s.modalColumn}>
                   {textProperties.map((text) => (
-                      <TextGroup key = {text.id} {...text}/>)
+                      <TextGroup key = {text.id} {...text} {...doctor}/>)
                   )}
                 </div>
               </div>

@@ -10,6 +10,7 @@ import { Modal } from '../modal/Modal'
 import { ItemGroup } from '../itemGroup/ItemGroup'
 import { useDispatch } from 'react-redux'
 import { deleteDoctor } from '../../features/doctor/doctorSlice'
+import { getNoun } from '../../utils/getNounFunc'
 
 
 export const Item = ({...doctor}) => {
@@ -38,7 +39,7 @@ export const Item = ({...doctor}) => {
             <div className={s.contentText}>
                 <ItemGroup valueLabel = {doctor.profession} classNameLabel = 'bigText'/>
                 <ItemGroup valueItem = {doctor.fio} classNameItem = 'normalText'/>
-                <ItemGroup valueLabel = 'Стаж: ' valueItem = {doctor.experience} classNameLabel = 'itemLabel' classNameItem = 'normalText'/>
+                <ItemGroup valueLabel = 'Стаж: ' valueItem = {doctor.experience + ' ' + getNoun(doctor.experience, 'год', 'года', 'лет')} classNameLabel = 'itemLabel' classNameItem = 'normalText'/>
                 <ItemGroup valueLabel = {doctor.hospital} valueItem = {doctor.address} classNameLabel = 'normalText' classNameItem = 'littleText'/>
                 <ItemGroup valueLabel = 'Образование: ' valueItem = {doctor.education} classNameLabel = 'itemLabel' classNameItem = 'normalText'/>
                 <ItemGroup valueLabel = 'Первичный приём: ' valueItem = {doctor.price + ' ₽'} classNameLabel = 'itemLabel' classNameItem = 'normalText'/>
@@ -56,7 +57,7 @@ export const Item = ({...doctor}) => {
             </div>
         </div>
         <Modal modalOpen = {editModalOpen} setModalOpen = {setEditModalOpen} type = 'edit-modal' doctor = {doctor}/>
-        <Modal modalOpen = {observeModalOpen} setModalOpen = {setObserveModalOpen} type = 'observe-modal'/>
+        <Modal modalOpen = {observeModalOpen} setModalOpen = {setObserveModalOpen} type = 'observe-modal' doctor = {doctor}/>
     </div>
   )
 }

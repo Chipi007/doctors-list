@@ -36,7 +36,7 @@
     @extend .common;
 }
 .observeFormContainer{
-    @extend .common;
+    display: flex;
     padding: 0 70px;
 }
 
