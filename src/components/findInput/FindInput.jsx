@@ -1,15 +1,11 @@
 import React from 'react'
-import { Button } from '../button/Button'
-import SearchButton from "../../img/search.svg"
 import s from './findInput.module.scss'
 
-export const FindInput = () => {
+export const FindInput = ({query, setQuery}) => {
+
   return (
     <div className={s.inputContainer}>
-      <input className = {s.findInput} type="text" placeholder = 'Поиск...'/>
-        <Button type = 'button' typeBtn = 'searchButton'>
-          <img src={SearchButton} alt="Поиск" />
-        </Button>
+      <input className = {s.findInput} type="text" placeholder = 'Поиск...' value = {query} onChange = {e => setQuery(e.target.value)}/>
     </div>
   )
 }
