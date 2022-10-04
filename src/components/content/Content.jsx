@@ -3,14 +3,14 @@ import s from './content.module.scss'
 import { Item } from '../item/Item'
 import { useSelector } from 'react-redux'
 
-export const Content = ({query}) => {
+export const Content = ({searchTerm}) => {
 
   const doctorsList = useSelector(state => state.doctor.doctorsList);
   const filterKeys = ['address', 'education', 'experience', 'fio', 'hospital', 'price', 'profession']
 
   const filterDoctors = (doctorsList) => {
     return doctorsList.filter(item => 
-      filterKeys.some(key => item[key].toLowerCase().includes(query)
+      filterKeys.some(key => item[key].toLowerCase().includes(searchTerm.toLowerCase())
       )
     )
   }

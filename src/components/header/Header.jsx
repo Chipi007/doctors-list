@@ -5,7 +5,7 @@ import s from "./header.module.scss";
 import { Modal } from '../modal/Modal'
 import { FindInput } from '../findInput/FindInput';
 
-export const Header = ({query, setQuery}) => {
+export const Header = ({setSearchParams, searchTerm}) => {
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -19,7 +19,7 @@ export const Header = ({query, setQuery}) => {
             <div className={s.logoContainer}>
                 <img src={Logo} alt="Logo" />
             </div>
-            <FindInput query = {query} setQuery = {setQuery}/>
+            <FindInput searchTerm= {searchTerm} setSearchParams = {setSearchParams}/>
             <Button type = 'button' typeBtn="addButton" value='add-button' onClick = {handleAddButton}>Добавить</Button>
         </div>
         <Modal modalOpen = {modalOpen} setModalOpen = {setModalOpen} type = 'add-modal'/>

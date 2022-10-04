@@ -11,21 +11,17 @@ import { ItemGroup } from '../itemGroup/ItemGroup'
 import { useDispatch } from 'react-redux'
 import { deleteDoctor } from '../../features/doctor/doctorSlice'
 import { getNoun } from '../../utils/getNounFunc'
+import { Link } from 'react-router-dom';
 
 
 export const Item = ({...doctor}) => {
 
     const [editModalOpen, setEditModalOpen] = useState(false);
-    const [observeModalOpen, setObserveModalOpen] = useState(false); 
 
     const dispatch = useDispatch();
 
     const handleEditButton = () =>{
         setEditModalOpen(true);
-    }
-
-    const handleObserveButton = () =>{
-        setObserveModalOpen(true);
     }
 
     const handleDeleteButton = () =>{
@@ -45,9 +41,11 @@ export const Item = ({...doctor}) => {
                 <ItemGroup valueLabel = 'Первичный приём: ' valueItem = {doctor.price + ' ₽'} classNameLabel = 'itemLabel' classNameItem = 'normalText'/>
             </div>
             <div className={s.contentButtons}>
-                <Button type = 'button' typeBtn = 'itemButton' onClick={handleObserveButton}>
-                    <img src={Arrow} alt="SeeInfo" />
-                </Button>
+                <Link to = {`/doctors/${doctor.id}`}>
+                    <Button type = 'button' typeBtn = 'itemButton'>
+                        <img src={Arrow} alt="SeeInfo" />
+                    </Button>
+                </Link>
                 <Button type = 'button' typeBtn = 'itemButton' onClick={handleEditButton}>
                     <img src={Pen} alt="EditInfo" />
                 </Button>
@@ -57,7 +55,6 @@ export const Item = ({...doctor}) => {
             </div>
         </div>
         <Modal modalOpen = {editModalOpen} setModalOpen = {setEditModalOpen} type = 'edit-modal' doctor = {doctor}/>
-        <Modal modalOpen = {observeModalOpen} setModalOpen = {setObserveModalOpen} type = 'observe-modal' doctor = {doctor}/>
     </div>
   )
 }

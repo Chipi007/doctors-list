@@ -1,12 +1,8 @@
 import React, { useMemo }from 'react'
 import s from './modal.module.scss';
 import { Button } from '../button/Button';
-import { Avatar } from '../avatar/Avatar'
 import { InputGroup } from '../inputGroup/InputGroup';
-import { TextGroup } from '../textGroup/TextGroup';
 import { firstInputProperties, secondInputProperties } from '../../utils/inputObjects';
-import { textProperties } from '../../utils/textObjects';
-import Doctor from '../../img/doctor.svg'
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { addDoctor, updateDoctor } from '../../features/doctor/doctorSlice';
@@ -141,19 +137,6 @@ const resetForm = (e) => {
                 <Button type = 'reset' typeBtn = 'secondaryButton' onClick= {(e) => resetForm(e)}>Очистить</Button>
               </form>
             )}
-            {type === 'observe-modal' && (
-              <div className={s.observeFormContainer}>
-                <div className={s.modalColumn}>
-                  <Avatar src = {doctor.photo ? doctor.photo : Doctor} alt = 'Doctor' className = 'itemAvatar'/>
-                </div>
-                <div className={s.modalColumn}>
-                  {textProperties.map((text) => (
-                      <TextGroup key = {text.id} {...text} {...doctor}/>)
-                  )}
-                </div>
-              </div>
-              )
-            }
           </div>
         </div>
       )}
