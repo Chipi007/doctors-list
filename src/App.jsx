@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header } from './components/header/Header';
 import { Content } from './components/content/Content';
+import { Route, Routes} from 'react-router-dom';
 import './reset.module.scss'
 import { useState } from 'react';
 
@@ -12,7 +13,9 @@ const App = () => {
   return (
     <div className="App">
         <Header query = {query} setQuery = {setQuery}/>
-        <Content query = {query}/>
+      <Routes>
+        <Route path = '/doctors' element = {<Content query = {query}/>}/>
+      </Routes>
     </div>
   );
 }

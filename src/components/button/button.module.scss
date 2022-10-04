@@ -33,13 +33,6 @@
         color: #29D1B3;
         @extend .common;
     }
-    &-searchButton{
-        position: absolute;
-        top:50%;
-        left: 90%;
-        transform:translate(-0%, -50%);
-        background-color: transparent;
-    }
     &-photoButton{
         display: flex;
         align-items: center;

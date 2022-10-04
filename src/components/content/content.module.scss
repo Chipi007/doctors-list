@@ -1,9 +1,14 @@
 .content{
     padding: 200px 208px 70px;
 }
-.contentConatiner{
+.contentContainer{
     display: flex;
     flex-wrap: wrap;
+
+    a{
+        display: block;
+        width: 100%;
+    }
 }
 .contentTitle{
     margin: 0 0 55px;

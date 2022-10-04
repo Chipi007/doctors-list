@@ -21,7 +21,7 @@ export const Content = ({query}) => {
       <div className={s.contentConatiner}>
         {filterDoctors(doctorsList) && filterDoctors(doctorsList).length > 0 ? (
           filterDoctors(doctorsList).map(doctor => (
-            <Item key = {doctor.id} {...doctor}/>
+              <Item key = {doctor.id} {...doctor}/>
           ))
         ) : <div className = {s.contentHello}>Начните добавление информации о докторах, нажав на кнопку "Добавить"</div>}
       </div>
