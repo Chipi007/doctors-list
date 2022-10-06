@@ -16,7 +16,7 @@ const App = () => {
     <div className="App">
         <Header setSearchParams = {setSearchParams} searchTerm = {searchTerm}/>
       <Routes>
-        <Route path = '/doctors' element = {<Content searchTerm = {searchTerm}/>}/>
+        <Route path = '/' element = {<Content searchTerm = {searchTerm}/>}/>
         <Route path = '/doctors/:id' element = {<RouteItem/>}></Route>
       </Routes>
     </div>

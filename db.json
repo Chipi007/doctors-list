@@ -1,0 +1,14 @@
+{
+    "doctors": [
+        {   "address": "fvfdfr",
+            "education": "json-server",
+            "experience": "typicode",
+            "fio": "json-server",
+            "hospital": "typicode",
+            "id": "json-server",
+            "photo": "",
+            "price": "json-server",
+            "profession": "typicode" 
+        }
+    ]
+}

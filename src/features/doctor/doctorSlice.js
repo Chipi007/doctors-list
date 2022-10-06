@@ -1,16 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const getInitialDoctors = () => {
-    const localDoctors = window.localStorage.getItem('doctors');
-    if(localDoctors){
-        return JSON.parse(localDoctors)
+// const getInitialDoctors = () => {
+//     const localDoctors = window.localStorage.getItem('doctors');
+//     if(localDoctors){
+//         return JSON.parse(localDoctors)
+//     }
+//     window.localStorage.setItem('doctors', JSON.stringify([]));
+//     return [];
+// };
+
+export const fetchDoctors = createAsyncThunk(
+    'doctors/fetchDoctors', 
+    async function() {
+        const response = await fetch ('http://localhost:3001/doctors');
+        const data = await response.json();
+        return data;
     }
-    window.localStorage.setItem('doctors', JSON.stringify([]));
-    return [];
-};
+)
 
 const initialState = {
-    doctorsList: getInitialDoctors(),
+    doctorsList: [],
+    staus: null,
+    error: null,
 }
 
 export const doctorSlice = createSlice({
@@ -45,6 +56,17 @@ export const doctorSlice = createSlice({
             }
 
         }
+    },
+    extraReducers: {
+        [fetchDoctors.pending]: (state) => {
+            state.staus = 'loading';
+            state.error = null;
+        },
+        [fetchDoctors.fulfilled]: (state, action) => {
+            state.staus = 'received';
+            state.doctorsList = action.payload;
+        },
+        [fetchDoctors.rejected]: (state, action) => {}
     }
 })
 
