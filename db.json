@@ -10,6 +10,17 @@
       "photo": "",
       "price": "json-server",
       "profession": "typicode"
+    },
+    {
+      "id": "32488bec-27ac-404f-8930-b1a349afcc2c",
+      "fio": "wdefrgthyju",
+      "profession": "ertyrty",
+      "hospital": "erdgtfhh",
+      "experience": "5",
+      "education": "efrgtyjui",
+      "address": "ertyj",
+      "price": "6",
+      "photo": "https://res.cloudinary.com/dxe0eimes/image/upload/v1665142454/fswia3xuvqd42pbwgtyb.png"
     }
   ]
 }

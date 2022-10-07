@@ -16,7 +16,7 @@ export const RouteItem = () => {
 
   return (
     <div className={s.content}>
-        <div className={s.contentTitle}>Список докторов</div>
+        <div className={s.contentTitle}>Данные доктора {fio}</div>
             <div className={s.contentConatiner}>
                 <div className={s.item}>
                     <div className={s.itemContent}>

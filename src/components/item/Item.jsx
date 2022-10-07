@@ -9,7 +9,7 @@ import { Avatar } from '../avatar/Avatar'
 import { Modal } from '../modal/Modal'
 import { ItemGroup } from '../itemGroup/ItemGroup'
 import { useDispatch } from 'react-redux'
-import { deleteAsyncDoctors } from '../../features/doctor/doctorSlice'
+import { deleteAsyncDoctor } from '../../features/doctor/doctorSlice'
 import { getNoun } from '../../utils/getNounFunc'
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ export const Item = ({...doctor}) => {
     }
 
     const handleDeleteButton = () =>{
-        dispatch(deleteAsyncDoctors(doctor.id));
+        dispatch(deleteAsyncDoctor(doctor.id));
     }
 
   return (

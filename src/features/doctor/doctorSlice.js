@@ -17,12 +17,13 @@ export const fetchDoctors = createAsyncThunk(
     }
 )
 
-export const deleteAsyncDoctors = createAsyncThunk(
+export const deleteAsyncDoctor = createAsyncThunk(
     'doctors/deleteAsyncDoctors',
     async function(id, {rejectWithValue, dispatch}) {
         try {
             const response = await fetch(`http://localhost:3001/doctors/${id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+
             })
             if (!response.ok) {
                 throw new Error()
@@ -30,6 +31,30 @@ export const deleteAsyncDoctors = createAsyncThunk(
             dispatch(deleteDoctor(id))
         } catch (error) {
             return rejectWithValue(error.message);
+        }
+    }
+)
+
+export const addAsyncDoctor = createAsyncThunk(
+    'doctors/addAsyncDoctor',
+    async ({id, ...values}, {rejectWithValue, dispatch}) => {
+        try {
+            const data = {id, ...values};
+            const response = await fetch(`http://localhost:3001/doctors`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            if (!response.ok) {
+                throw new Error()
+            }
+            const answer = await response.json();
+            dispatch(addDoctor(answer))
+            
+        } catch (error) {
+            return rejectWithValue(error.message)
             
         }
 
@@ -56,13 +81,7 @@ export const doctorSlice = createSlice({
             window.localStorage.setItem('doctors', JSON.stringify(doctorsArray))
         },
         deleteDoctor: (state, action) => {
-            // const doctorsList = window.localStorage.getItem('doctors');
-            // if(doctorsList) {
-            //     const doctorsArray = JSON.parse(doctorsList).filter((doctor, index) => doctor.id !== action.payload);
-            //     window.localStorage.setItem('doctors', JSON.stringify(doctorsArray));
-            //     state.doctorsList = doctorsArray;
-            // }
-            state.doctorsList = state.doctorsList.filter((doctor, index) => doctor.id !== action.payload)
+            state.doctorsList = state.doctorsList.filter(doctor => doctor.id !== action.payload)
         },
         updateDoctor: (state, action) => {
             const doctorsList = window.localStorage.getItem('doctors');
