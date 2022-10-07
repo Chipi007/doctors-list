@@ -14,7 +14,7 @@ export const Content = ({searchTerm}) => {
     dispatch(fetchDoctors());
   }, [dispatch])
 
-  const doctorsList = useSelector(state => state.doctor.doctorsList);
+  const {doctorsList, status, error} = useSelector(state => state.doctor);
   const filterKeys = ['address', 'education', 'experience', 'fio', 'hospital', 'price', 'profession']
 
   const filterDoctors = (doctorsList) => {
@@ -32,7 +32,9 @@ export const Content = ({searchTerm}) => {
           filterDoctors(doctorsList).map(doctor => (
               <Item key = {doctor.id} {...doctor}/>
           ))
-        ) : <div className = {s.contentHello}>Начните добавление информации о докторах, нажав на кнопку "Добавить"</div>}
+        ) : status === 'loading' ?<div className = {s.contentHello}>Loading...</div> 
+          : error ? <div className = {s.contentHello}>Возникла ошибка. Обратитесь в службу поддержки.</div>
+          : <div className = {s.contentHello}>Начните добавление информации о докторах, нажав на кнопку "Добавить"</div>}
       </div>
     </div>
   )

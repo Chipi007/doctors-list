@@ -1,20 +1,38 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// const getInitialDoctors = () => {
-//     const localDoctors = window.localStorage.getItem('doctors');
-//     if(localDoctors){
-//         return JSON.parse(localDoctors)
-//     }
-//     window.localStorage.setItem('doctors', JSON.stringify([]));
-//     return [];
-// };
-
 export const fetchDoctors = createAsyncThunk(
     'doctors/fetchDoctors', 
-    async function() {
-        const response = await fetch ('http://localhost:3001/doctors');
-        const data = await response.json();
-        return data;
+    async function(_, {rejectWithValue}) {
+
+        try {
+            const response = await fetch ('http://localhost:3001/doctors');
+            if (!response.ok) {
+                throw new Error()
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+)
+
+export const deleteAsyncDoctors = createAsyncThunk(
+    'doctors/deleteAsyncDoctors',
+    async function(id, {rejectWithValue, dispatch}) {
+        try {
+            const response = await fetch(`http://localhost:3001/doctors/${id}`, {
+                method: 'DELETE'
+            })
+            if (!response.ok) {
+                throw new Error()
+            }
+            dispatch(deleteDoctor(id))
+        } catch (error) {
+            return rejectWithValue(error.message);
+            
+        }
+
     }
 )
 
@@ -38,12 +56,13 @@ export const doctorSlice = createSlice({
             window.localStorage.setItem('doctors', JSON.stringify(doctorsArray))
         },
         deleteDoctor: (state, action) => {
-            const doctorsList = window.localStorage.getItem('doctors');
-            if(doctorsList) {
-                const doctorsArray = JSON.parse(doctorsList).filter((doctor, index) => doctor.id !== action.payload);
-                window.localStorage.setItem('doctors', JSON.stringify(doctorsArray));
-                state.doctorsList = doctorsArray;
-            }
+            // const doctorsList = window.localStorage.getItem('doctors');
+            // if(doctorsList) {
+            //     const doctorsArray = JSON.parse(doctorsList).filter((doctor, index) => doctor.id !== action.payload);
+            //     window.localStorage.setItem('doctors', JSON.stringify(doctorsArray));
+            //     state.doctorsList = doctorsArray;
+            // }
+            state.doctorsList = state.doctorsList.filter((doctor, index) => doctor.id !== action.payload)
         },
         updateDoctor: (state, action) => {
             const doctorsList = window.localStorage.getItem('doctors');
@@ -66,7 +85,10 @@ export const doctorSlice = createSlice({
             state.staus = 'received';
             state.doctorsList = action.payload;
         },
-        [fetchDoctors.rejected]: (state, action) => {}
+        [fetchDoctors.rejected]: (state, action) => {
+            state.staus = 'rejected';
+            state.error = action.payload;
+        }
     }
 })
 
