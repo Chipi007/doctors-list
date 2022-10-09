@@ -1,26 +1,15 @@
 {
   "doctors": [
     {
-      "address": "fvfdfr",
-      "education": "json-server",
-      "experience": "typicode",
-      "fio": "json-server",
-      "hospital": "typicode",
-      "id": "json-server",
-      "photo": "",
-      "price": "json-server",
-      "profession": "typicode"
-    },
-    {
-      "id": "32488bec-27ac-404f-8930-b1a349afcc2c",
-      "fio": "wdefrgthyju",
-      "profession": "ertyrty",
-      "hospital": "erdgtfhh",
+      "id": "46e9219d-debb-42da-9f13-6f4a1319f374",
+      "fio": "xvnbhmj",
+      "profession": "xcfvhgfjv ",
+      "hospital": "gvghgkku",
       "experience": "5",
-      "education": "efrgtyjui",
-      "address": "ertyj",
-      "price": "6",
-      "photo": "https://res.cloudinary.com/dxe0eimes/image/upload/v1665142454/fswia3xuvqd42pbwgtyb.png"
+      "education": "srtyut",
+      "address": "sfrgdtytuy",
+      "price": "5",
+      "photo": "https://res.cloudinary.com/dxe0eimes/image/upload/v1665319478/kur8tqkcm2ykuc6rh8hf.png"
     }
   ]
 }
