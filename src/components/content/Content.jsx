@@ -30,7 +30,7 @@ export const Content = ({searchTerm}) => {
       <div className={s.contentConatiner}>
         {filterDoctors(doctorsList) && filterDoctors(doctorsList).length > 0 ? (
           filterDoctors(doctorsList).map(doctor => (
-              <Item key = {doctor.id} {...doctor}/>
+              <Item key = {doctor.id} doctor = {doctor}/>
           ))
         ) : status === 'loading' ?<div className = {s.contentHello}>Loading...</div> 
           : error ? <div className = {s.contentHello}>Возникла ошибка. Обратитесь в службу поддержки.</div>

@@ -14,7 +14,7 @@ import { getNoun } from '../../utils/getNounFunc'
 import { Link } from 'react-router-dom';
 
 
-export const Item = ({...doctor}) => {
+export const Item = ({doctor}) => {
 
     const [editModalOpen, setEditModalOpen] = useState(false);
 
