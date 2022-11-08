@@ -5,7 +5,7 @@ import { InputGroup } from '../inputGroup/InputGroup';
 import { firstInputProperties, secondInputProperties } from '../../utils/inputObjects';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { addAsyncDoctor, updateAsyncDoctor } from '../../features/doctor/doctorSlice';
+import { addDoctor, updateDoctor } from '../../features/doctor/doctorSlice';
 import { v4 as uuid} from 'uuid';
 import { validationSchema } from './validation';
 import { InputFileGroup } from '../inputFileGroup/InputFileGroup';
@@ -39,7 +39,7 @@ export const Modal = ({type, modalOpen, setModalOpen, doctor}) => {
   const onSubmit = (values) => {
     switch(type){
       case 'add-modal':
-        dispatch(addAsyncDoctor({
+        dispatch(addDoctor({
           id: uuid(),
           ...values,
         }
@@ -51,7 +51,7 @@ export const Modal = ({type, modalOpen, setModalOpen, doctor}) => {
         const doctorsObjectWithoutId = Object.fromEntries(filtered);
         const {id} = doctor;
         if(JSON.stringify(doctorsObjectWithoutId) !== JSON.stringify(values)){
-          dispatch(updateAsyncDoctor({id, ...values}))
+          dispatch(updateDoctor({id, ...values}))
         }
       break;
       default: return '';

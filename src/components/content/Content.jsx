@@ -2,17 +2,17 @@ import React from 'react'
 import s from './content.module.scss'
 import { Item } from '../item/Item'
 import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { fetchDoctors } from '../../features/doctor/doctorSlice'
-import { useDispatch } from 'react-redux'
+// import { useEffect } from 'react'
+// import { fetchDoctors } from '../../features/doctor/doctorSlice'
+// import { useDispatch } from 'react-redux'
 
 export const Content = ({searchTerm}) => {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchDoctors());
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchDoctors());
+  // }, [dispatch])
 
   const {doctorsList, status, error} = useSelector(state => state.doctor);
   const filterKeys = ['address', 'education', 'experience', 'fio', 'hospital', 'price', 'profession']
