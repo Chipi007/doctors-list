@@ -1,15 +1,3 @@
 {
-  "doctors": [
-    {
-      "id": "e84e91b3-2da6-4d23-bc34-3336412decaf",
-      "fio": "sedfgthyuji",
-      "profession": "efrgthyuji",
-      "hospital": "reftyju",
-      "experience": "5",
-      "education": "dfghmj",
-      "address": "grthujk",
-      "price": "6",
-      "photo": ""
-    }
-  ]
+  "doctors": []
 }

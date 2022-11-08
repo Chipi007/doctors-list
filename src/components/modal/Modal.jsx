@@ -5,7 +5,7 @@ import { InputGroup } from '../inputGroup/InputGroup';
 import { firstInputProperties, secondInputProperties } from '../../utils/inputObjects';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { addDoctor, updateDoctor } from '../../features/doctor/doctorSlice';
+import { sagaActions } from '../../sagas/sagaActions';
 import { v4 as uuid} from 'uuid';
 import { validationSchema } from './validation';
 import { InputFileGroup } from '../inputFileGroup/InputFileGroup';
@@ -39,11 +39,7 @@ export const Modal = ({type, modalOpen, setModalOpen, doctor}) => {
   const onSubmit = (values) => {
     switch(type){
       case 'add-modal':
-        dispatch(addDoctor({
-          id: uuid(),
-          ...values,
-        }
-        ))
+        dispatch({type: sagaActions.ADD_DOCTOR, payload: {id: uuid(), ...values}})
       break;
       case 'edit-modal':
         const doctorAsArray = Object.entries(doctor);
@@ -51,7 +47,7 @@ export const Modal = ({type, modalOpen, setModalOpen, doctor}) => {
         const doctorsObjectWithoutId = Object.fromEntries(filtered);
         const {id} = doctor;
         if(JSON.stringify(doctorsObjectWithoutId) !== JSON.stringify(values)){
-          dispatch(updateDoctor({id, ...values}))
+          dispatch({type: sagaActions.UPDATE_DOCTOR, payload: {id, ...values}})
         }
       break;
       default: return '';

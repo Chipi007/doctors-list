@@ -9,7 +9,7 @@ import { Avatar } from '../avatar/Avatar'
 import { Modal } from '../modal/Modal'
 import { ItemGroup } from '../itemGroup/ItemGroup'
 import { useDispatch } from 'react-redux'
-import { deleteDoctor } from '../../features/doctor/doctorSlice'
+import { sagaActions } from '../../sagas/sagaActions'
 import { getNoun } from '../../utils/getNounFunc'
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,8 @@ export const Item = ({doctor}) => {
     }
 
     const handleDeleteButton = () =>{
-        dispatch(deleteDoctor(doctor.id));
+        const { id } = doctor;
+        dispatch({type: sagaActions.DELETE_DOCTOR, payload: {id}});
     }
 
   return (
