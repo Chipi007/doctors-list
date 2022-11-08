@@ -1,0 +1,6 @@
+export const sagaActions = {
+    FETCH_DOCTORS: 'FETCH_DOCTORS',
+    ADD_DOCTOR: 'ADD_DOCTOR',
+    UPDATE_DOCTOR: 'UPDATE_DOCTOR',
+    DELETE_DOCTOR: 'DELETE_DOCTOR',
+  }
